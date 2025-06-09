@@ -32,6 +32,8 @@ print(desc)
 
 with open('env.sh', 'w+') as hdl:
 	hdl.write(f"COMMUNITY_EXTENSION_GITHUB={desc['repo']['github']}\n")
+	if 'canonical_name' in desc.get('repo', {}):
+		hdl.write(f"COMMUNITY_EXTENSION_CANONICAL_NAME={desc['repo']['canonical_name']}\n")
 	extension_ref = desc['repo']['ref']
 	if  os.environ['DUCKDB_VERSION'] != os.environ['DUCKDB_LATEST_STABLE']:
 		if 'ref_next' in desc['repo']:
@@ -53,7 +55,3 @@ with open('env.sh', 'w+') as hdl:
 		hdl.write(f"COMMUNITY_EXTENSION_VCPKG_COMMIT={vcpkg_commit}\n")
 	if deploy:
 		hdl.write(f"COMMUNITY_EXTENSION_DEPLOY=1\n")
-	if custom_toolchain_script and custom_toolchain_script != "false":
-		hdl.write(f"COMMUNITY_EXTENSION_CUSTOM_TOOLCHAIN_SCRIPT=true\n")
-	else:
-		hdl.write(f"COMMUNITY_EXTENSION_CUSTOM_TOOLCHAIN_SCRIPT=false\n")
