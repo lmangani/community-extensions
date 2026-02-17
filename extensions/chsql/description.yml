@@ -12,7 +12,7 @@ extension:
 
 repo:
   github: Query-farm/clickhouse-sql
-  ref: 7c871adf7990631ecdca77fb2cd0fc7e5c5b5665
+  ref: d17e3d6915203ca1f6e71658326231d0c36eb56a
 
 docs:
   hello_world: |
